@@ -1,12 +1,13 @@
-
+import java.util.Arrays;
 
 public class CustomList {
     private int[] array;
 
-    public CustomList(int[] array) {
-
-
+    public CustomList(int size){
+        array = new int[size];
     }
+
+
 
     public void addLastElement(int element) {
         expendCapacityArray(array);
@@ -19,9 +20,7 @@ public class CustomList {
             expendCapacityArray(array);
         System.arraycopy(array, index, array, index + 1, array.length - index);
 
-        else{
-        }
-        return;
+
     }
 
     public void addLastElements(int[] elements) {
@@ -42,21 +41,20 @@ public class CustomList {
         }
     }
 
-    private void expendCapacityArray(int[] array) {
-        int[] expendedArray = new int[array.length + 1];
-        System.arraycopy(array, 0, expendedArray, 0, array.length);
-        array = expendedArray;
-    }
-
-    private void checkIndexValid(int index) {
+    private boolean checkIndexValid(int index) {
         if (index <= array.length & index < 0) {
-
-
+            return true;
         } else {
             System.out.println("indexIsNotValid");
 
         }
-        return;
+        return false;
     }
 
+    @Override
+    public String toString() {
+        return "CustomList{" +
+                "array=" + Arrays.toString(array) +
+                '}';
+    }
 }
